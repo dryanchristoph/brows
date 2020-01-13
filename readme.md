@@ -1,7 +1,7 @@
 <p align="center"><img src="resources/images/logo/brows.png" width="400"></p>
 
 <p align="center">
-<a href="https://brows.id" target="__blank">
+<a href="https://brows.id" target="_blank">
 	<img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status">
 </a>
 </p>
@@ -20,7 +20,7 @@
 - BROWS memiliki kewenangan untuk menutup akun Pengguna, baik sementara (suspensi akun) maupun permanen (pencabutan akun) dalam hal ditemukan adanya tindakan kecurangan dalam bertransaksi dan menggunakan layanan dalam aplikasi BROWS yang ditujukan untuk kepentingan pribadi Pengguna.
 - Pengguna memahami dan menyetujui bahwa BROWS dapat sewaktu-waktu menutup akun Pengugna secara sementara maupun secara permanen dalam hal BROWS menerima laporan dari Pengguna lainnya atas perbuatan dan/atau dugaan perbuatan Pengguna yang mengganggu penggunaan aplikasi BROWS oleh Pengguna lainnya, termasuk namun tidak terbatas pada penyalahgunaan akun Pengguna untuk mengganggu Pengguna lain (bullying atau harassment), penipuan, dan/atau tidak dilaksanakannya kewajiban oleh Pengguna sebagai Pemberi Sewa atau Penerima Sewa. Akun Pengguna dapat dikembalikan dan/atau dibuka kembali berdasarkan hasil pemeriksaan dan kebijakan BROWS sepihak.
 
-Terms and Conditions selengkapnya dapat diakses di <a href="https://brows.id/tnc" target="__blank">Terms & Conditions</a> pada website BROWS.
+Terms and Conditions selengkapnya dapat diakses di <a href="https://brows.id/tnc" target="_blank">Terms & Conditions</a> pada website BROWS.
 
 ## Pembaharuan dan Perubahan
 
