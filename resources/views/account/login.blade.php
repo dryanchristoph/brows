@@ -35,6 +35,7 @@
                                 <div class="clearfix"><input id="checkbox1" name="checkbox1" type="checkbox" checked="checked"> <label for="checkbox1">Remember me</label></div>
                                 <button type="submit" class="btn">Log in</button>
                             </form>
+                            <div class="g-signin2" data-onsuccess="onSignIn"></div>
                         </div>
                     </div>
                     <div id="recoverPasswordForm" class="d-none">

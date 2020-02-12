@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1">
+    <meta name="google-signin-client_id" content="640425749475-fh9tgt33bnqdj93kj88df2sujbbrcgt1.apps.googleusercontent.com">
     <meta name="description" content="">
     <meta name="author" content="">
     <title>BROWS - Platform Penyewaan Barang Online Terlengkap</title>

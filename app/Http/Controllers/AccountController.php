@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\UserRegistrationRequest;
 use App\Http\Requests\UserLoginRequest;
 use Ixudra\Curl\Facades\Curl;
+use Socialite;
 use App\Customer;
 use File;
 use DB;
@@ -238,6 +239,14 @@ class AccountController extends Controller
 		session($arr_session);
 
 		return redirect('account');
+	}
+
+	public function doGoogleAuth(Request $request){
+		return Socialite::driver('google')->redirect();
+	}
+
+	public function googleAuthSuccess(Request $request){
+		
 	}
 
 	public function register(Request $request){
