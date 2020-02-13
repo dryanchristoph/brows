@@ -97,9 +97,11 @@ class HomeController extends Controller
     public function index (Request $request){
         $product = DB::table('m_product')
                         ->join('m_customer', 'm_product.cust_id', '=', 'm_customer.cust_id')
-                        ->select('m_product.*', 'm_customer.*')
+                        ->leftJoin('t_product_review','t_product_review.prod_id','=','m_product.prod_id')
+                        ->select('m_product.*', 'm_customer.*', DB::raw('AVG(t_product_review.review_point) As rating'))
                         ->where('prod_status',1)
                         ->orderBy('prod_id','desc')
+                        ->groupBy('prod_id')
                         ->get()->keyBy('prod_id');
 
         $arr_prod_id = array_keys($product->toArray());

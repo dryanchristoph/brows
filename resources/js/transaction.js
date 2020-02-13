@@ -55,6 +55,24 @@ $( document ).ready(function() {
 		});
 	});
 
+	$('button.btn.btn-addreview').click(function(){
+		reff_no = $(this).attr('data-reff_no');
+		$.ajax({
+			url: base_url+'/transaction/addReviewPage',
+			method: 'POST',
+			data: {	reff_no: reff_no,
+					'_token': $('meta[name="csrf-token"]').attr('content')},
+			beforeSend: function(){
+				$('div.modal-body > div#prdGalleryModal').parent().html('');
+				$('div#modalQuickView div.modal-content div.loader-wrap').removeClass('cd-hidden');
+			},
+			success: function(data){
+				$('div#modalQuickView div.modal-content div.loader-wrap').addClass('cd-hidden');
+				$('div#modalQuickView .modal-body').html(data);
+			}
+		});
+	});
+
 	$('div.cart-table-prd-owner-profile input[name="owner_id"]').click(function(){
 		if($(this).parents().eq(1).hasClass('active') == false){
 			$('div.cart-table-prd-owner-profile').removeClass('active');

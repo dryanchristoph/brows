@@ -300,6 +300,9 @@
                             </div>
                         </div>
                         <div class="mt-2"></div>
+                        <div class="row text-right">
+                            <button class="btn btn-primary cd-keep-right btn-addreview" data-reff_no="{{encrypt($tx->reff_no)}}">Beri Ulasan</button>
+                        </div>
                     </div>
                 </div>
                 <?php /*

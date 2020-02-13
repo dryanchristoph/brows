@@ -1,5 +1,5 @@
 var active_image_index;
-
+var clicked = false;
 
 $( document ).ready(function() {
 
@@ -400,5 +400,37 @@ function setCountdownOTP(){
             document.getElementById("countdown_otp").innerHTML = "EXPIRED";
           }
         }, 1000);
+    }
+}
+
+function ClickLogin(){
+    clicked=true;
+}
+
+function onSignIn(googleUser) {
+    if (clicked) {
+        // Useful data for your client-side scripts:
+        var profile = googleUser.getBasicProfile();
+
+        var arr_profile = {};
+
+        console.log('name = '+profile.getName());
+        
+        arr_profile['id'] = profile.getId();
+        arr_profile['name'] = profile.getName();
+        arr_profile['cust_firstname'] = profile.getGivenName();
+        arr_profile['cust_lastname'] = profile.getFamilyName();
+        arr_profile['imageUrl'] = profile.getImageUrl();
+        arr_profile['cust_email'] = profile.getEmail();
+
+        request_param = $.param(arr_profile);
+
+        // The ID token you need to pass to your backend:
+        var id_token = googleUser.getAuthResponse().id_token;
+        console.log("ID Token: " + id_token);
+
+        //console.log(profile);
+
+        window.location.href = base_url+'/account/googleAuthSuccess?'+request_param;
     }
 }

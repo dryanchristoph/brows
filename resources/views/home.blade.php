@@ -189,8 +189,27 @@
                            <h2 class="prd-title">
                                 <a href="{{ url('product/details?prod_id='.encrypt($product->prod_id)) }}">{{ $product->prod_name }}</a>
                             </h2>
-                            <div class="prd-rating prd-hidemobile"><i class="icon-star fill"></i><i class="icon-star fill"></i><i class="icon-star fill"></i>
-                                <i class="icon-star fill"></i><i class="icon-star"></i>
+                            <div class="prd-rating prd-hidemobile">
+                                @php
+                                    $i = 0;
+                                @endphp
+                                @if($product->rating)
+
+                                    $rounded_rating = round($product->rating)
+                                    @foreach($rounded_rating as $rating)
+                                        <i class="icon-star fill"></i>
+                                        @php
+                                            $i++;
+                                        @endphp
+                                    @endforeach
+
+                                    @while($i<5)
+                                        <i class="icon-star"></i>
+                                        @php
+                                            $i++;
+                                        @endphp
+                                    @endwhile
+                                @endif
                             </div>
                             <div class="prd-price">
                                 <div class="price-new">{{ 'Rp '.number_format(($product->prod_unit_price+$product->prod_insurance_cost), 0, ".", ",") }} per hari</div>

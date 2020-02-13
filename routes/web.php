@@ -39,6 +39,7 @@ Route::middleware(['access-log', 'web'])->group(function () {
 	Route::any('/account/getAddrArea', 'AccountController@getAddrArea');
 	Route::any('/account/forgetCookie', 'AccountController@forgetCookie');
 	Route::any('/account/logout', 'AccountController@logout');
+	Route::get('/account/googleAuthSuccess', 'AccountController@googleAuthSuccess');
 
 	Route::any('/product', 'ProductController@index');
 	Route::any('/product/upload', 'ProductController@details');
@@ -63,6 +64,7 @@ Route::middleware(['access-log', 'web'])->group(function () {
 	Route::any('/transaction/updateStatus', 'TransactionController@updateStatus');
 	Route::post('/transaction/checkout', 'TransactionController@checkout');
 	Route::get('/transaction/checkout', 'TransactionController@showCheckout');
+	Route::any('/transaction/addReviewPage', 'TransactionController@addReviewPage');
 
 	Route::any('/faq','HomeController@faq');
 	Route::any('/tnc','HomeController@tnc');
@@ -73,6 +75,6 @@ Route::middleware(['access-log', 'web'])->group(function () {
 	Route::get('/clear-cache', function() {
 	    Artisan::call('cache:clear');
 	    return "Cache is cleared";
-});
+	});
 
 });

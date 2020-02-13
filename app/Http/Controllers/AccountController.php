@@ -20,7 +20,7 @@ class AccountController extends Controller
 {
 	public function __construct(Request $request){
 		$this->middleware(function ($request, $next) {
-			$arr_nosession = array('login','doLogin','register','doRegister','verifyEmail','forgetCookie');
+			$arr_nosession = array('login','doLogin','register','doRegister','verifyEmail','forgetCookie','googleAuthSuccess');
 
 			if(!$request->session()->get('login') && !in_array($request->segment(2),$arr_nosession))
 				return redirect('account/login');
@@ -214,6 +214,7 @@ class AccountController extends Controller
 	}
 
 	public function login(Request $request){
+		#die('test');
 		return view('account.login');
 	}
 
@@ -246,7 +247,36 @@ class AccountController extends Controller
 	}
 
 	public function googleAuthSuccess(Request $request){
-		
+		$cust = 
+		DB::table('m_customer')
+			->where('cust_email',$request->cust_email);
+
+		#dd($cust->get());
+
+		if($cust->count()){
+			$cust = $cust->first();
+			$arr_session = array(	'email'	=> $cust->cust_email,
+									'cust_id' => $cust->cust_id,
+									'cust_image' => $cust->cust_image,
+									'login'	=> TRUE);
+			session($arr_session);
+		} else {
+			#dd($request->all());
+			$customer = new Customer;
+
+			$customer->cust_firstname = $request->cust_firstname;
+			$customer->cust_lastname = $request->cust_lastname;
+			$customer->cust_email = $request->cust_email;
+
+			$customer->save();
+
+			$arr_session = array(	'email'	=> $request->cust_email,
+									'cust_id' => $customer->cust_id,
+									'login'	=> TRUE);
+			session($arr_session);
+		}
+
+		return redirect('account');
 	}
 
 	public function register(Request $request){
@@ -258,7 +288,6 @@ class AccountController extends Controller
 			$validator = Validator::make($request->all(),[])->validate();
 
 			#successful validation
-			
 
 			if($cust_id = $request->session()->get('cust_id')){
 				#$customer->firstOrNew(array('cust_id' => $cust_id));

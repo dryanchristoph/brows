@@ -62,7 +62,7 @@ class TransactionController extends Controller
     }
 
     public function cart(Request $request){
-        die('cust_id = '.$request->session()->get('cust_id'));
+        #die('cust_id = '.$request->session()->get('cust_id'));
     	$cart = DB::table('t_cart_detail')
                         ->join('m_product', 't_cart_detail.prod_id', '=', 'm_product.prod_id')
                         ->join('m_customer', 'm_product.cust_id', '=', 'm_customer.cust_id')
@@ -571,6 +571,7 @@ class TransactionController extends Controller
         $tx = DB::table('t_transaction')
                     ->join('m_customer','t_transaction.owner_id','=','m_customer.cust_id')
                     ->join('t_transaction_detail','t_transaction.reff_no','=','t_transaction_detail.reff_no')
+                    #->leftJoin('t_product_review','t_product_review.tra_id','=','t_transaction.')
                     ->select('t_transaction.*','m_customer.*',
                         DB::raw('sum(t_transaction_detail.tra_price*t_transaction_detail.tra_qty) AS sum_price'),
                         DB::raw('sum(t_transaction_detail.tra_insurance_cost*t_transaction_detail.tra_qty) AS sum_insurance'))
@@ -713,5 +714,27 @@ class TransactionController extends Controller
         ];
 
         return $return;
-    } 
+    }
+
+    public function addReviewPage(Request $request){
+        $reff_no = decrypt($request->reff_no);
+
+        $tra_details = DB::table('t_transaction_detail')
+                        ->join('m_product','m_product.prod_id','=','t_transaction_detail.prod_id')
+                        ->where('reff_no',$reff_no)
+                        ->get()->keyBy('prod_id');
+
+        $arr_prod_id = array_keys($tra_details->toArray());
+
+        $productimage = DB::table('m_product_image')->whereIn('prod_id', $arr_prod_id)->get()->toArray();
+
+        $arr_productimage = array();
+        foreach($productimage as $key=>$val){
+            $arr_productimage[$val->prod_id][$key] = $val;
+        }
+
+        ksort($arr_productimage, SORT_NUMERIC);
+
+        return view('transaction.addReview',['tra_details'=>$tra_details,'product_images'=>$arr_productimage]);
+    }
 }
