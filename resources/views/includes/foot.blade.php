@@ -252,10 +252,10 @@
     <script src="{{asset('resources/js/autoNumeric.js')}}"></script>
     <script src="{{asset('resources/js/moment.min.js')}}"></script>
     <script src="{{asset('resources/js/lightpick.js')}}"></script>
-    <script src="{{asset('resources/js/custom.js?cf=20200213')}}"></script>
+    <script src="{{asset('resources/js/custom.js?cf=20200217')}}"></script>
     <script src="{{asset('resources/js/transaction.js?cf=20191120')}}"></script>
     
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
 
     @if(Request::segment(1)=='account')
     <script src="{{asset('resources/js/less.js')}}"></script>

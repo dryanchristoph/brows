@@ -408,6 +408,11 @@ function ClickLogin(){
 }
 
 function onSignIn(googleUser) {
+    
+}
+
+function onSuccess(googleUser) {
+    clicked = true;
     if (clicked) {
         // Useful data for your client-side scripts:
         var profile = googleUser.getBasicProfile();
@@ -433,4 +438,20 @@ function onSignIn(googleUser) {
 
         window.location.href = base_url+'/account/googleAuthSuccess?'+request_param;
     }
+}
+
+function onFailure(error) {
+    console.log(error);
+}
+
+function renderButton() {
+  gapi.signin2.render('my-signin2', {
+    'scope': 'profile email',
+    'width': 240,
+    'height': 50,
+    'longtitle': true,
+    'theme': 'dark',
+    'onsuccess': onSuccess,
+    'onfailure': onFailure
+  });
 }
