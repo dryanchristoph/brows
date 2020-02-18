@@ -18,7 +18,7 @@
     <!-- Custom styles for this template -->
     <link href="{{asset('resources/css/style-light.css')}}" rel="stylesheet">
     <link href="{{asset('resources/css/bootstrap-toggle.min.css')}}" rel="stylesheet">
-    <link href="{{asset('resources/css/style.css?cf=20200218')}}" rel="stylesheet">
+    <link href="{{asset('resources/css/style.css?cf=20200219')}}" rel="stylesheet">
     <link href="{{asset('resources/css/font-awesome.min.css')}}" rel="stylesheet">
     <link href="{{asset('resources/css/lightpick.css')}}" rel="stylesheet">
     <link href="{{asset('resources/css/bootstrap-select.min.css')}}" rel="stylesheet">

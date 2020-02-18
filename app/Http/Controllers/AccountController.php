@@ -253,18 +253,18 @@ class AccountController extends Controller
 	public function doFBCallback(){
 		try {
             $user = Socialite::driver('facebook')->user();
-            dd($user);
-            $create['name'] = $user->getName();
-            $create['email'] = $user->getEmail();
-            $create['facebook_id'] = $user->getId();
 
-            $userModel = new User;
-            $createdUser = $userModel->addNew($create);
-            Auth::loginUsingId($createdUser->id);
+            $fullname = $user->getName();
+            $arr_fullname = explode(' ',$fullname,2);
 
+			$data['firstname'] = $arr_fullname[0];
+			$data['lastname'] = $arr_fullname[1];
+			$data['email'] = $user->getEmail();
+			$data['socmed_id'] = $user->getId();
 
-            return redirect()->route('home');
+			$this->socmedAuthSuccess($data);
 
+            #return redirect()->route('home');
 
         } catch (Exception $e) {
             return redirect('account/doFBAuth');
@@ -272,9 +272,20 @@ class AccountController extends Controller
 	}
 
 	public function googleAuthSuccess(Request $request){
+		#dd($request->all());
+		$data['firstname'] = $request->cust_firstname;
+		$data['lastname'] = $request->cust_lastname;
+		$data['email'] = $request->cust_email;
+		$data['socmed_id'] = $request->id;
+
+		return $this->socmedAuthSuccess($data);
+	}
+
+	public function socmedAuthSuccess($data){
 		$cust = 
 		DB::table('m_customer')
-			->where('cust_email',$request->cust_email);
+			->where('cust_email',$data['email'])
+			->orWhere('cust_socmed_id',$data['socmed_id']);
 
 		#dd($cust->get());
 
@@ -289,13 +300,14 @@ class AccountController extends Controller
 			#dd($request->all());
 			$customer = new Customer;
 
-			$customer->cust_firstname = $request->cust_firstname;
-			$customer->cust_lastname = $request->cust_lastname;
-			$customer->cust_email = $request->cust_email;
+			$customer->cust_firstname = $data['firstname'];
+			$customer->cust_lastname = $data['lastname'];
+			$customer->cust_email = $data['email'];
+			$customer->cust_socmed_id = $data['socmed_id'];
 
 			$customer->save();
 
-			$arr_session = array(	'email'	=> $request->cust_email,
+			$arr_session = array(	'email'	=> $data['email'],
 									'cust_id' => $customer->cust_id,
 									'login'	=> TRUE);
 			session($arr_session);

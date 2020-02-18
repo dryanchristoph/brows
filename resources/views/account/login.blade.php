@@ -50,13 +50,16 @@
                 </div>
                 <div class="col-divider"></div>
                 <div class="col-sm-6 col-md-4 mt-3 mt-sm-0">
+                    <h2 class="text-center">Quick Sign In</h2>
                     <div class="row">
-                        <div class="row">
-                            <div id="my-signin2" class="cd-centralize"></div>
-                        </div>
-                        <br /><br />
-                        <div class="row">
-                            <a href="{{ url('account/doFBAuth') }}" id="fb-signin" class="btn btn-primary btn-block cd-centralize"><i class="fa fa-facebook"></i> Sign in with <b>Facebook</b></a>
+                        <div class="col-sm-12">
+                            <div class="row">
+                                <div id="my-signin2" class="cd-centralize"></div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <a href="{{ url('account/doFBAuth') }}" id="fb-signin" class="btn btn-primary btn-block cd-centralize"><i class="fa fa-facebook"></i> Sign in with <b>Facebook</b></a>
+                            </div>
                         </div>
                     </div>
                     <hr />
