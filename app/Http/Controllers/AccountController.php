@@ -262,7 +262,7 @@ class AccountController extends Controller
 			$data['email'] = $user->getEmail();
 			$data['socmed_id'] = $user->getId();
 
-			$this->socmedAuthSuccess($data);
+			return $this->socmedAuthSuccess($data);
 
             #return redirect()->route('home');
 
