@@ -274,6 +274,18 @@ span.option-desc{
 	margin-bottom: 10px;
 }
 
+a#fb-signin{
+	width: 240px;
+	font-size: inherit;
+    padding: 10px 0px;
+    background-color: #4285f4;
+    text-transform: capitalize;
+}
+
+a#fb-signin i{
+	margin-right: 10px;
+}
+
 .qty-changer input[type="text"][name="daterange"]{
     border: 1px solid rgba(0,0,0,.2);
     font-size: inherit;

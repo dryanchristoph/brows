@@ -35,7 +35,6 @@
                                 <div class="clearfix"><input id="checkbox1" name="checkbox1" type="checkbox" checked="checked"> <label for="checkbox1">Remember me</label></div>
                                 <button type="submit" class="btn">Log in</button>
                             </form>
-                            <div id="my-signin2"></div>
                         </div>
                     </div>
                     <div id="recoverPasswordForm" class="d-none">
@@ -51,6 +50,16 @@
                 </div>
                 <div class="col-divider"></div>
                 <div class="col-sm-6 col-md-4 mt-3 mt-sm-0">
+                    <div class="row">
+                        <div class="row">
+                            <div id="my-signin2" class="cd-centralize"></div>
+                        </div>
+                        <br /><br />
+                        <div class="row">
+                            <a href="{{ url('account/doFBAuth') }}" id="fb-signin" class="btn btn-primary btn-block cd-centralize"><i class="fa fa-facebook"></i> Sign in with <b>Facebook</b></a>
+                        </div>
+                    </div>
+                    <hr />
                     <h2 class="text-center">REGISTER</h2>
                     <div class="form-wrapper">
                         <p>Dengan membuat akun di BROWS.id, Anda dapat melakukan transaksi sewa menyewa barang yang Anda inginkan.</p><a href="{{ url('account/register') }}" class="btn">Buat Akun</a>

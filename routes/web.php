@@ -40,6 +40,8 @@ Route::middleware(['access-log', 'web'])->group(function () {
 	Route::any('/account/forgetCookie', 'AccountController@forgetCookie');
 	Route::any('/account/logout', 'AccountController@logout');
 	Route::get('/account/googleAuthSuccess', 'AccountController@googleAuthSuccess');
+	Route::get('/account/doFBAuth', 'AccountController@doFBAuth');
+	Route::get('/account/doFBCallback', 'AccountController@doFBCallback');
 
 	Route::any('/product', 'ProductController@index');
 	Route::any('/product/upload', 'ProductController@details');

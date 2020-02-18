@@ -20,7 +20,7 @@ class AccountController extends Controller
 {
 	public function __construct(Request $request){
 		$this->middleware(function ($request, $next) {
-			$arr_nosession = array('login','doLogin','register','doRegister','verifyEmail','forgetCookie','googleAuthSuccess');
+			$arr_nosession = array('login','doLogin','register','doRegister','verifyEmail','forgetCookie','googleAuthSuccess','doFBAuth','doFBCallback');
 
 			if(!$request->session()->get('login') && !in_array($request->segment(2),$arr_nosession))
 				return redirect('account/login');
@@ -244,6 +244,31 @@ class AccountController extends Controller
 
 	public function doGoogleAuth(Request $request){
 		return Socialite::driver('google')->redirect();
+	}
+
+	public function doFBAuth(){
+		return Socialite::driver('facebook')->redirect();
+	}
+
+	public function doFBCallback(){
+		try {
+            $user = Socialite::driver('facebook')->user();
+            dd($user);
+            $create['name'] = $user->getName();
+            $create['email'] = $user->getEmail();
+            $create['facebook_id'] = $user->getId();
+
+            $userModel = new User;
+            $createdUser = $userModel->addNew($create);
+            Auth::loginUsingId($createdUser->id);
+
+
+            return redirect()->route('home');
+
+
+        } catch (Exception $e) {
+            return redirect('account/doFBAuth');
+        }
 	}
 
 	public function googleAuthSuccess(Request $request){
