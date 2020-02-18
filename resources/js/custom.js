@@ -293,6 +293,10 @@ $( document ).ready(function() {
 
     setCountdownOTP();
 
+    $('div#my-signin2').click(function(){
+        clicked = true;
+    });
+
 });
 
 function changeProductImage(imgurl,index,is_placeholder){
@@ -412,7 +416,6 @@ function onSignIn(googleUser) {
 }
 
 function onSuccess(googleUser) {
-    clicked = true;
     if (clicked) {
         // Useful data for your client-side scripts:
         var profile = googleUser.getBasicProfile();
