@@ -73,11 +73,15 @@
                                     </div>
                                     <div class="row">
                                         <span class="col col-sm-4 col-lg-4 info-title">Email <span class="badge badge-{{ config('config.verif_badge')[$data->cust_email_verified]['badge'] }}">{{ config('config.verif_badge')[$data->cust_email_verified]['label'] }}</span></span>
-                                        <span class="col col-sm-8 col-lg-8">{{ $data->cust_email }}</span>
+                                        <span class="col col-sm-8 col-lg-8">
+                                            <input type="text" name="cust_email" class="form-control" value="{{ old('cust_email') ? old('cust_email') : $data->cust_email }}" />
+                                        </span>
                                     </div>
                                     <div class="row">
                                         <span class="col col-sm-4 col-lg-4 info-title">Nomor HP <span class="badge badge-{{ config('config.verif_badge')[$data->cust_phone_verified]['badge'] }}">{{ config('config.verif_badge')[$data->cust_phone_verified]['label'] }}</span></span>
-                                        <span class="col col-sm-8 col-lg-8">{{ $data->cust_phone }}</span>
+                                        <span class="col col-sm-8 col-lg-8">
+                                            <input type="text" name="cust_phone" class="form-control" value="{{ old('cust_phone') ? old('cust_phone') : $data->cust_phone }}" />
+                                        </span>
                                     </div>
                                     <div class="row">
                                         <span class="col col-sm-4 col-lg-4 info-title">Alamat</span>

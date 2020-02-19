@@ -293,7 +293,8 @@ $( document ).ready(function() {
 
     setCountdownOTP();
 
-    $('div#my-signin2').click(function(){
+    $('div#my-signin2').click(function(e){
+        e.preventDefault();
         clicked = true;
     });
 
@@ -454,6 +455,8 @@ function onFailure(error) {
 
 function renderButton() {
   gapi.signin2.render('my-signin2', {
+    //'ux_mode': 'redirect',
+    //'redirect_uri': base_url+'/account/googleAuthSuccess?',
     'scope': 'profile email',
     'width': 240,
     'height': 36,

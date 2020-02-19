@@ -272,6 +272,8 @@ class AccountController extends Controller
 	}
 
 	public function googleAuthSuccess(Request $request){
+		#return Socialite::driver('google')->redirect();
+		#dd($user);
 		#dd($request->all());
 		$data['firstname'] = $request->cust_firstname;
 		$data['lastname'] = $request->cust_lastname;
