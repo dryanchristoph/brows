@@ -105,9 +105,15 @@ class AccountController extends Controller
 
 	public function doUpdate(Request $request){
 		#echo '<pre>'; print_r($request->all());echo '</pre>';die;
+		$cust_id = $request->session()->get('cust_id');
+
+		#$cur_data = DB::table('m_customer')->where('cust_id',$cust_id)->first();
+
 		$validation = [
             'cust_firstname'=>'required|max:100',
             'cust_lastname'=>'required|max:100',
+            'cust_phone'=>'required|regex:/(08)[0-9]{9,11}$/',
+            'cust_email'=>'required|email|unique:m_customer,cust_email,'.$cust_id.',cust_id',
             'addr_desc'=>'required|max:255',
             'addr_provinsi'=>'required',
             'addr_kota'=>'required',
@@ -120,6 +126,8 @@ class AccountController extends Controller
         $aliases = [
             'cust_firstname'=>'Nama Depan',
             'cust_lastname'=>'Nama Belakang',
+            'cust_phone'=>'Nomor HP',
+            'cust_email'=>'Email',
             'addr_desc'=>'Alamat',
             'addr_provinsi'=>'Provinsi',
             'addr_kota'=>'Kota',
