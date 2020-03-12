@@ -142,7 +142,7 @@
                                     <div class="row">
                                         <span class="col col-sm-4 col-lg-4 info-title">Jenis Kelamin</span>
                                         <span class="col col-sm-8 col-lg-8">
-                                            <input type="checkbox" id="cust_sex" name="cust_sex[]" data-toggle="toggle" data-on="Laki - Laki" data-off="Perempuan" {{old('cust_sex') ? ' checked' : old('cust_firstname') ? '' : ' checked' }}>
+                                            <input type="checkbox" id="cust_sex" name="cust_sex[]" data-toggle="toggle" data-on="Laki - Laki" data-off="Perempuan" {{ old('cust_sex') ? ' checked' : old('cust_sex') ? '' : ' checked' }}>
                                         </span>
                                     </div>
                                     <div class="row">

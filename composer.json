@@ -12,6 +12,7 @@
         "didikprabowo/rajaongkir": "dev-master",
         "fideloper/proxy": "^4.0",
         "ixudra/curl": "^6.18",
+        "laravel-frontend-presets/material-dashboard": "^1.0",
         "laravel/framework": "^6.0",
         "laravel/socialite": "^4.3",
         "laravel/tinker": "^1.0",

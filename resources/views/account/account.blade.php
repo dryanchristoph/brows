@@ -61,7 +61,7 @@
                                     </div>
                                     <div class="row">
                                         <span class="col col-sm-4 col-lg-4 info-title">Nomor HP <span class="badge badge-{{ config('config.verif_badge')[$data->cust_phone_verified]['badge'] }}">{{ config('config.verif_badge')[$data->cust_phone_verified]['label'] }}</span></span>
-                                        <span class="col col-sm-8 col-lg-8">{{ '0'.$data->cust_phone }}</span>
+                                        <span class="col col-sm-8 col-lg-8">{{ $data->cust_phone }}</span>
                                     </div>
                                     <div class="row">
                                         <span class="col col-sm-4 col-lg-4 info-title">Alamat</span>

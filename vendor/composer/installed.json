@@ -1180,6 +1180,51 @@
         "description": "Highlight PHP code in terminal"
     },
     {
+        "name": "laravel-frontend-presets/material-dashboard",
+        "version": "v1.0.9",
+        "version_normalized": "1.0.9.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/laravel-frontend-presets/material-dashboard.git",
+            "reference": "644d3095c87ff82e0a9e6af0df94ff00adaa9302"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/laravel-frontend-presets/material-dashboard/zipball/644d3095c87ff82e0a9e6af0df94ff00adaa9302",
+            "reference": "644d3095c87ff82e0a9e6af0df94ff00adaa9302",
+            "shasum": ""
+        },
+        "require": {
+            "laravel/framework": "^5.5 || ^6.0"
+        },
+        "time": "2019-09-25T09:54:27+00:00",
+        "type": "library",
+        "extra": {
+            "laravel": {
+                "providers": [
+                    "LaravelFrontendPresets\\MaterialPreset\\MaterialPresetServiceProvider"
+                ]
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "LaravelFrontendPresets\\MaterialPreset\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "description": "Laravel 5.x Front-end preset for material dashboard",
+        "homepage": "https://github.com/creativetimofficial/material-dashboard-laravel",
+        "keywords": [
+            "laravel",
+            "material",
+            "preset"
+        ]
+    },
+    {
         "name": "laravel/framework",
         "version": "v6.5.0",
         "version_normalized": "6.5.0.0",

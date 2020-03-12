@@ -112,7 +112,7 @@ class AccountController extends Controller
 		$validation = [
             'cust_firstname'=>'required|max:100',
             'cust_lastname'=>'required|max:100',
-            'cust_phone'=>'required|regex:/(08)[0-9]{9,11}$/',
+            'cust_phone'=>'required|digits_between:9,13',
             'cust_email'=>'required|email|unique:m_customer,cust_email,'.$cust_id.',cust_id',
             'addr_desc'=>'required|max:255',
             'addr_provinsi'=>'required',
@@ -145,6 +145,8 @@ class AccountController extends Controller
 
 		$arr_update = [	'cust_firstname' => $request->cust_firstname,
 						'cust_lastname' => $request->cust_lastname,
+						'cust_email' => $request->cust_email,
+						'cust_phone' => $request->cust_phone,
 						'cust_bday' => $cust_bday,
 						'cust_sex' => $cust_sex,
 						'cust_iscomplete' => 1
